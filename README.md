@@ -14,6 +14,7 @@ $ ./bin/console server:run
 The Symfony webserver should be up & running on `127.0.0.1:8000`.
 
 ### Todos
+ - random greetings
  - PI-Overview (page to open on PI as "standby" screen)
  - multiple widgets to select from
  - easy widget adding
