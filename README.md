@@ -1,5 +1,4 @@
 # pidash
----
 
 ### Introduction
 pidash is just a simple Symfony 4 application that lets you view all of your Raspberry PI data from anywhere (obviously you need an internet connection). It also includes a standby screen page to open on your Raspberry PI while not using it.
