@@ -12,15 +12,17 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        <header class="site-header">
-            {% block header %}{% endblock %}
-        </header>
 
-        {% block body %}{% endblock %}
+        <div class="main-wrapper-first">
+            <div class="banner-area">
+                <div class="container">
+                    <div class="row justify-content-center height align-items-center">
+                        {% block body %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <footer class="site-footer">
-            {% block footer %}{% endblock %}
-        </footer>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
