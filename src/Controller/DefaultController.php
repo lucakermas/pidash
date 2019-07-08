@@ -12,6 +12,10 @@ class DefaultController extends AbstractController
      */
     public function indexAction()
     {
-        return $this->render('index.html.twig');
+        $name = getenv('NAME');
+
+        return $this->render('index.html.twig', [
+            'name' => $name
+        ]);
     }
 }
