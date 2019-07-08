@@ -1,0 +1,12 @@
+name: pidash.local
+network:
+    ip: 127.0.0.1
+    host: pidash.local
+document_root: public
+config:
+    php: 7.2
+    apache: true
+    mysql: false
+    mailhog: false
+exec:
+    - composer install --no-interaction
