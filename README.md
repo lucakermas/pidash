@@ -8,7 +8,8 @@ pidash is just a simple Symfony 4 application that lets you view all of your Ras
 $ git clone https://github.com/lucakermas/pidash.git
 $ cd pidash
 $ composer install
-$ encore build
+$ npm install
+$ npm run build
 $ ./bin/console server:run
 ```
 The Symfony webserver should be up & running on `127.0.0.1:8000`.
