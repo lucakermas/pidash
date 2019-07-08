@@ -2,11 +2,25 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}PIDash{% endblock %}</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,500,600" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+
+        <script src="{{ asset('build/app.js') }}"></script>
+
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        <header class="site-header">
+            {% block header %}{% endblock %}
+        </header>
+
         {% block body %}{% endblock %}
+
+        <footer class="site-footer">
+            {% block footer %}{% endblock %}
+        </footer>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

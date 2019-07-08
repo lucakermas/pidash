@@ -34,7 +34,7 @@ Encore
     // but, you probably want this, unless you're building a single-page app
     .enableSingleRuntimeChunk()
 
-
+    .autoProvidejQuery()
     .enableSassLoader()
 
     /*
