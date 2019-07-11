@@ -12,7 +12,7 @@
                 <h6 class="text-uppercase">CPU Temperature</h6>
                 <div class="temperature">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" id="arc-background" width="200px" height="160px">
-                        <circle cx="100" cy="100" r="100" fill="black" mask="url(#temp-mask)"></circle>
+                        <circle cx="100" cy="100" r="100" fill="#e66686" mask="url(#temp-mask)"></circle>
 
                         <mask id="temp-mask">
                             <rect x="0" y="0" width="200" height="200" fill="#fff"></rect>
@@ -29,10 +29,15 @@
         </div>
         <div class="col-lg-5">
             <div class="widget text-center">
-                <h6 class="text-uppercase">This is a test widget</h6>
-                <p class="mb-0">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                <h6 class="text-uppercase">Weather at Berlin</h6>
+                <p class="mb-4 pt-4">
+                    <i style="font-size: 4.5rem;" class="wi {{ weather.icon }}"></i>
+                    {#                    {{ dump(weather) }}#}
                 </p>
+
+                <div>
+                    <h3>{{ weather.temperature }} °C</h3>
+                </div>
             </div>
         </div>
     </div>
