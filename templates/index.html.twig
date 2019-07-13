@@ -28,15 +28,14 @@
             </div>
         </div>
         <div class="col-lg-5">
-            <div class="widget text-center">
+            <div class="widget weather-widget text-center" data-url="{{ path('api_get_weather', {'city': 'Berlin'}) }}">
                 <h6 class="text-uppercase">Weather at Berlin</h6>
                 <p class="mb-4 pt-4">
                     <i style="font-size: 4.5rem;" class="wi {{ weather.icon }}"></i>
-                    {#                    {{ dump(weather) }}#}
                 </p>
 
                 <div>
-                    <h3>{{ weather.temperature }} °C</h3>
+                    <h3>{{ weather.temperature }} °{{ weather.tempType }}</h3>
                 </div>
             </div>
         </div>

@@ -8,7 +8,7 @@
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,500,600" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('build/app.css') }}">
 
-        <script src="{{ asset('build/app.js') }}"></script>
+        {{ encore_entry_script_tags('app') }}
 
         {% block stylesheets %}{% endblock %}
     </head>
@@ -21,6 +21,7 @@
             </div>
         </div>
 
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>

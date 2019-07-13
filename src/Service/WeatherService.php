@@ -54,6 +54,13 @@ class WeatherService
      */
     public function getWeatherByCity(string $city, $celsius = true)
     {
+        $weatherData = [
+            'time' => new \DateTime(),
+            'temperature' => 0,
+            'tempType' => 'F',
+            'icon' => ''
+        ];
+
         // TODO: Use Google API
         $lat = 52.52;
         $long = 14.404954;
@@ -65,7 +72,10 @@ class WeatherService
         $currentData = $result->currently;
 
         if ($celsius) {
-            $currentData->temperature = round(($currentData->temperature - 32) / 1.8, 1);
+            $weatherData['temperature'] = round(($currentData->temperature - 32) / 1.8, 1);
+            $weatherData['tempType'] = 'C';
+        } else {
+            $weatherData['temperature'] = $currentData->temperature;
         }
 
         // Turn time in seconds into datetime & extract hour.
@@ -79,8 +89,9 @@ class WeatherService
 
         $icon = !empty(self::ICONS[$currentData->icon]) ? self::ICONS[$currentData->icon][$time] : 'wi-alien';
 
-        $currentData->icon = $icon;
-
-        return $currentData;
+        $weatherData['icon'] = $icon;
+        $weatherData['time'] = $date;
+        
+        return $weatherData;
     }
 }
