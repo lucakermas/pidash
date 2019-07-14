@@ -8,7 +8,7 @@
     </div>
     <div class="row mt-3 justify-content-center">
         <div class="col-lg-5">
-            <div class="widget text-center">
+            <div class="widget cpu-widget text-center" data-url="{{ path('api_rasppi_cpu', {'piName': 'testpi'}) }}">
                 <h6 class="text-uppercase">CPU Temperature</h6>
                 <div class="temperature">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" id="arc-background" width="200px" height="160px">
@@ -22,7 +22,7 @@
                     </svg>
 
                     <div class="temp-text">
-                        <h3>42 °C</h3>
+                        <h3>? °C</h3>
                     </div>
                 </div>
             </div>

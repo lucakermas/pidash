@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\RaspPiData;
 use App\Service\WeatherService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -24,5 +26,51 @@ class ApiController extends AbstractController
         $weatherData = $weatherService->getWeatherByCity($city);
 
         return new JsonResponse($weatherData);
+    }
+
+    /**
+     * @Route("/rasppi/{piName}", name="api_rasppi_cpu", methods={"POST", "GET"})
+     */
+    public function raspPiCpuAction(Request $request, $piName)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var RaspPiData|null $pi */
+        $pi = $em->getRepository(RaspPiData::class)->findOneBy([
+            'name' => $piName
+        ]);
+
+        if ($pi === null) {
+            return new JsonResponse([
+                'success' => false,
+                'message' => "Pi $piName does not exist."
+            ]);
+        }
+
+        if ($request->isMethod('POST')) {
+            $data = (array)json_decode($request->getContent());
+
+            if (!empty($data['temperature'])) {
+                $pi->setCpuTemp((float)$data['temperature']);
+
+                $em->persist($pi);
+                $em->flush();
+
+                return new JsonResponse([
+                    'success' => true,
+                    'message' => "Temperature set."
+                ]);
+            }
+
+            return new JsonResponse([
+                'success' => false,
+                'message' => "Please include the temperature."
+            ]);
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'temperature' => $pi->getCpuTemp()
+        ]);
     }
 }

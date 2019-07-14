@@ -5,6 +5,7 @@ $(document).ready(runUpdates);
  */
 function runUpdates() {
     updateWeather();
+    updateCPUTemp();
 }
 
 function updateWeather() {
@@ -27,4 +28,29 @@ function updateWeather() {
 
     // Run this function again in 30 minutes.
     setTimeout(updateWeather, (60 * 30) * 1000);
+}
+
+// TODO: Maybe call this when the temperature actually updates rather than every x seconds.
+function updateCPUTemp() {
+    console.log('Updating cpu temperatures...');
+    $('.cpu-widget').each(function (key, elem) {
+        elem = $(elem);
+
+        $.ajax({
+            url: elem.data('url'),
+            type: 'GET',
+            success: function (data) {
+                const tempText = $(elem.find('.temp-text h3'));
+
+                if (data.success) {
+                    tempText.text(`${data.temperature} °C`);
+                } else {
+                    tempText.text(data.message);
+                }
+            }
+        });
+    });
+
+    // Run this function again in 30 minutes.
+    setTimeout(updateCPUTemp, 5000);
 }
