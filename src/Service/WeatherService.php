@@ -68,6 +68,7 @@ class WeatherService
         $key = getenv('WEATHER_API_KEY');
         $url = "https://api.darksky.net/forecast/$key/$lat,$long";
 
+        // TODO: Check if curl is faster
         $result = json_decode(file_get_contents($url));
         $currentData = $result->currently;
 
