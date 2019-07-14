@@ -22,3 +22,4 @@ The Symfony webserver should be up & running on `127.0.0.1:8000`.
  - Make items arrangable
  - API for Raspberry PI data
  - pidash-client (Python3.7 sending data to website if wanted)
+ - Multiple weather APIs to choose from
