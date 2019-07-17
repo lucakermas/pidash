@@ -51,6 +51,6 @@ function updateCPUTemp() {
         });
     });
 
-    // Run this function again in 30 minutes.
+    // Run this function again in 5 seconds.
     setTimeout(updateCPUTemp, 5000);
 }
