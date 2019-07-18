@@ -48,10 +48,10 @@ class ApiController extends AbstractController
         }
 
         if ($request->isMethod('POST')) {
-            $data = (array)json_decode($request->getContent());
+            $temperature = $request->get('temperature');
 
-            if (!empty($data['temperature'])) {
-                $pi->setCpuTemp((float)$data['temperature']);
+            if (!empty($temperature)) {
+                $pi->setCpuTemp(round($temperature, 1));
 
                 $em->persist($pi);
                 $em->flush();
